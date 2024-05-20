@@ -1,0 +1,30 @@
+.header {
+  padding: 1rem;
+  background-color: white;
+  height: 100%;
+  box-shadow: 0 4px 10px rgba(179, 179, 179, 0.1);
+}
+
+.label {
+  color: #344767;
+  font-weight: 300;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.label:hover {
+  background-color: aliceblue;
+}
+
+.label.active {
+  background-color: var(--main-color);
+  color: white;
+}
+
+ul button {
+  margin-top: auto;
+}
