@@ -2,38 +2,21 @@
 import { signIn } from "next-auth/react";
 import { logo } from "@/src/utils/mock.example";
 import styles from "./login.module.css";
-import { useState } from "react";
 
 const Login = () => {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-
-  const signInNextAuth = async (
-    email: FormDataEntryValue,
-    password: FormDataEntryValue
-  ) => {
-    setIsLoading(true);
-    await signIn("credentials", {
-      email,
-      password,
-    })
-      .then(() => {
-        setIsLoading(false);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  };
-
-  const handleSubmit = (event: any) => {
+  const handleSubmit = async (event: any) => {
     event.preventDefault();
 
     const formData = new FormData(event.target);
     const email = formData.get("email");
     const password = formData.get("password");
 
-    if (email && password) {
-      signInNextAuth(email, password);
-    }
+    const resp = await signIn("credentials", {
+      email,
+      password,
+    });
+
+    console.log("response =>", resp);
   };
 
   return (
