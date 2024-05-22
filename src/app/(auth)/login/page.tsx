@@ -51,11 +51,7 @@ const Login = () => {
           />
         </div>
 
-        <button
-          type="submit"
-          className={styles.submit_button}
-          disabled={isLoading}
-        >
+        <button type="submit" className={styles.submit_button}>
           Iniciar Sesión
         </button>
       </form>
