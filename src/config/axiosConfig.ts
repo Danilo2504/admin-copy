@@ -1,12 +1,12 @@
-import axios from 'axios'
-import { signOut } from 'next-auth/react';
+import axios from "axios";
+import { signOut } from "next-auth/react";
 
 const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL,
+  baseURL: process.env.NEXTAUTH_URL,
   timeout: 10000,
   headers: {
-    'Content-Type': 'application/json',
-    Accept: 'application/json',
+    "Content-Type": "application/json",
+    Accept: "application/json",
   },
 });
 
