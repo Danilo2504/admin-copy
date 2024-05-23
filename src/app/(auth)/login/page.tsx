@@ -18,10 +18,10 @@ const Login = () => {
     // });
     const data = await signIn({ email, password });
     if (data) {
-      console.log(data);
+      console.log("entro");
       return data;
     } else {
-      console.log("Algo salio mal");
+      console.error("algo salio mal");
       return null;
     }
   };

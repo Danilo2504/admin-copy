@@ -2,14 +2,13 @@ import axios from "axios";
 import { signOut } from "next-auth/react";
 
 const api = axios.create({
-  baseURL: process.env.NEXTAUTH_URL,
+  baseURL: process.env.NEXT_PUBLIC_AUTH_URL,
   timeout: 10000,
   headers: {
     "Content-Type": "application/json",
     Accept: "application/json",
   },
 });
-
 // api.interceptors.request.use(
 //   (config) => {
 //     // const token = localStorage.getItem('token');
