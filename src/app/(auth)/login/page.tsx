@@ -1,7 +1,8 @@
 "use client";
-import { signIn } from "next-auth/react";
+// import { signIn } from "next-auth/react";
 import { logo } from "@/src/utils/mock.example";
 import styles from "./login.module.css";
+import { signIn } from "@/src/services/auth";
 
 const Login = () => {
   const handleSubmit = async (event: any) => {
@@ -11,12 +12,18 @@ const Login = () => {
     const email = formData.get("email");
     const password = formData.get("password");
 
-    const resp = await signIn("credentials", {
-      email,
-      password,
-    });
-
-    console.log("response =>", resp);
+    // const resp = await signIn("credentials", {
+    //   email,
+    //   password,
+    // });
+    const data = await signIn({ email, password });
+    if (data) {
+      console.log(data);
+      return data;
+    } else {
+      console.log("Algo salio mal");
+      return null;
+    }
   };
 
   return (
