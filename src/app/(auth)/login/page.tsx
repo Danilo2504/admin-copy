@@ -1,8 +1,8 @@
 "use client";
-// import { signIn } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import { logo } from "@/src/utils/mock.example";
 import styles from "./login.module.css";
-import { signIn } from "@/src/services/auth";
+// import { signIn } from "@/src/services/auth";
 
 const Login = () => {
   const handleSubmit = async (event: any) => {
@@ -12,18 +12,19 @@ const Login = () => {
     const email = formData.get("email");
     const password = formData.get("password");
 
-    // const resp = await signIn("credentials", {
-    //   email,
-    //   password,
-    // });
-    const data = await signIn({ email, password });
-    if (data) {
-      console.log("entro");
-      return data;
-    } else {
-      console.error("algo salio mal");
-      return null;
-    }
+    const resp = await signIn("credentials", {
+      email,
+      password,
+    });
+    console.log(resp);
+    // const data = await signIn({ email, password });
+    // if (data) {
+    //   console.log("entro");
+    //   return data;
+    // } else {
+    //   console.error("algo salio mal");
+    //   return null;
+    // }
   };
 
   return (
