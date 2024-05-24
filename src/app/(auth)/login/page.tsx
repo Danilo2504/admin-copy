@@ -12,19 +12,10 @@ const Login = () => {
     const email = formData.get("email");
     const password = formData.get("password");
 
-    const resp = await signIn("credentials", {
+    await signIn("credentials", {
       email,
       password,
     });
-    console.log(resp);
-    // const data = await signIn({ email, password });
-    // if (data) {
-    //   console.log("entro");
-    //   return data;
-    // } else {
-    //   console.error("algo salio mal");
-    //   return null;
-    // }
   };
 
   return (
