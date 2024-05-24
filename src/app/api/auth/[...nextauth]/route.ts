@@ -5,7 +5,6 @@ import { signIn } from "@/src/services/auth";
 const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
-      // The name to display on the sign in form (e.g. 'Sign in with...')
       name: "credentials",
       credentials: {
         email: { label: "Email", type: "email", placeholder: "test@test.com" },
@@ -17,10 +16,17 @@ const authOptions: NextAuthOptions = {
           email: string;
           password: string;
         };
-        const data = await signIn({ email, password });
-        if (data) {
-          return data;
-        } else {
+        try {
+          const user = await signIn({ email, password });
+
+          if (user) {
+            return user;
+          } else {
+            console.error("Credenciales inválidas");
+            return null;
+          }
+        } catch (error) {
+          console.error(error);
           return null;
         }
       },
@@ -31,14 +37,17 @@ const authOptions: NextAuthOptions = {
   },
   callbacks: {
     async jwt({ token, user }) {
-      return { ...token, ...user };
+      if (user) {
+        return { ...token, ...user };
+      }
+      return token;
     },
     async session({ session, token }) {
-      session.user = token as any;
+      session.user = token;
       return session;
     },
     async redirect({ url, baseUrl }) {
-      return "/";
+      return baseUrl;
     },
   },
   session: {

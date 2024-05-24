@@ -2,7 +2,6 @@
 import { signIn } from "next-auth/react";
 import { logo } from "@/src/utils/mock.example";
 import styles from "./login.module.css";
-// import { signIn } from "@/src/services/auth";
 
 const Login = () => {
   const handleSubmit = async (event: any) => {
